@@ -11,7 +11,7 @@ namespace AzureStorage
 	public class Game1 : Game
 	{
 		// Replace with your own key
-		const string ConnectionString = "USE YOUR KEY HERE";
+		const string ConnectionString = "USE YOUR CONNECTIONSTRING HERE";
 		// Replace with your own key
 
 
