@@ -11,7 +11,7 @@ namespace AzureStorage
 	public class Game1 : Game
 	{
 		// Replace with your own key
-		const string ConnectionString = "DefaultEndpointsProtocol=http;AccountName=azuregames;AccountKey=0C9fGdcjmbhDUh0Gb4IJaU78uN33GT7fIFHVF7C/SwYsIcXRTOJByyxGHZTod1OEwCrnxHMHhqTYjd66RQCicQ==;EndpointSuffix=core.windows.net";
+		const string ConnectionString = "USE YOUR KEY HERE";
 		// Replace with your own key
 
 
