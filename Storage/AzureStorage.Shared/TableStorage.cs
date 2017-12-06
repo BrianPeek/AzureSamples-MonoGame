@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Table;
+using MonoGame.Common;
 
 public class TableStorage : BaseStorage
 {
@@ -11,6 +12,10 @@ public class TableStorage : BaseStorage
 	public string DemoShare = "demofileshare";
 	public string DemoDirectory = "demofiledirectory";
 	public string QueueName = "samplequeue";
+
+	public TableStorage(TextBox tb) : base(tb)
+	{
+	}
 
 	public async void TableStorageTest()
 	{

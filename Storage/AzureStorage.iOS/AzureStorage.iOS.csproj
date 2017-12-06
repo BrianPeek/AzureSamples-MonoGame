@@ -142,6 +142,12 @@
     <BundleResource Include="Default.png" />
     <BundleResource Include="GameThumbnail.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\MonoGame.Common\MonoGame.Common.csproj">
+      <Project>{a2752cd1-0cc2-42f7-b775-1492d7a4b6bc}</Project>
+      <Name>MonoGame.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\AzureStorage.Shared\AzureStorage.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\MonoGame\v3.0\MonoGame.Content.Builder.targets" />

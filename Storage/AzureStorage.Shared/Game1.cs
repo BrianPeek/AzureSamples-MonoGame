@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonoGame.Common;
 
 namespace AzureStorage
 {
@@ -10,19 +11,24 @@ namespace AzureStorage
 	public class Game1 : Game
 	{
 		// Replace with your own key
-		const string ConnectionString = "REPLACE WITH YOUR OWN KEY";
+		const string ConnectionString = "USE YOUR CONNECTIONSTRING HERE";
 		// Replace with your own key
 
 
-		GraphicsDeviceManager _graphics;
-		SpriteBatch _spriteBatch;
-		SpriteFont _font;
+		private GraphicsDeviceManager _graphics;
+		private SpriteBatch _spriteBatch;
+		private SpriteFont _font;
+		private TextBox _textBox;
 
-		BaseStorage _storage;
+		private BaseStorage _storage;
 
 		public Game1()
 		{
 			_graphics = new GraphicsDeviceManager(this);
+#if WINDOWS
+			_graphics.PreferredBackBufferWidth = 1280;
+			_graphics.PreferredBackBufferHeight = 1024;
+#endif
 			Window.AllowUserResizing = true;
 			Content.RootDirectory = "Content";
 		}
@@ -49,6 +55,8 @@ namespace AzureStorage
 
 			// TODO: use this.Content to load your game content here
 			_font = Content.Load<SpriteFont>("Font");
+
+			_textBox = new TextBox(new Vector2(20,60), _spriteBatch, _font);
 		}
 
 		/// <summary>
@@ -73,28 +81,28 @@ namespace AzureStorage
 			{
 				if(state.IsKeyDown(Keys.D1))
 				{
-					BlobStorage s = new BlobStorage();
+					BlobStorage s = new BlobStorage(_textBox);
 					_storage = s;
 					s.Initialize(ConnectionString);
 					s.BlobStorageTest();
 				}
 				else if(state.IsKeyDown(Keys.D2))
 				{
-					FileStorage s = new FileStorage();
+					FileStorage s = new FileStorage(_textBox);
 					_storage = s;
 					s.Initialize(ConnectionString);
 					s.FileStorageTest();
 				}
 				else if(state.IsKeyDown(Keys.D3))
 				{
-					QueueStorage s = new QueueStorage();
+					QueueStorage s = new QueueStorage(_textBox);
 					_storage = s;
 					s.Initialize(ConnectionString);
 					s.QueueStorageTest();
 				}
 				else if(state.IsKeyDown(Keys.D4))
 				{
-					TableStorage s = new TableStorage();
+					TableStorage s = new TableStorage(_textBox);
 					_storage = s;
 					s.Initialize(ConnectionString);
 					s.TableStorageTest();
@@ -116,7 +124,7 @@ namespace AzureStorage
 				_spriteBatch.DrawString(_font, "Press 1) Blob, 2) File, 3) Queue, 4) Table", new Vector2(20,20), Color.Red);
 
 				if(_storage != null)
-					_spriteBatch.DrawString(_font, _storage.Text, new Vector2(20,60), Color.White);
+					_textBox.Draw(gameTime);
 
 			_spriteBatch.End();
 

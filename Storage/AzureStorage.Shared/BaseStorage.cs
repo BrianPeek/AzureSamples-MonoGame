@@ -1,12 +1,18 @@
 ﻿using System.IO;
 using Microsoft.WindowsAzure.Storage;
+using MonoGame.Common;
 
 public class BaseStorage
 {
 	protected CloudStorageAccount StorageAccount;
-	public string Text;
 	public bool Running;
 	public Stream OutputStream;
+	private TextBox _textBox;
+
+	public BaseStorage(TextBox tb)
+	{
+		_textBox = tb;
+	}
 
 	// Use this for initialization
 	public void Initialize(string connectionString)
@@ -16,14 +22,11 @@ public class BaseStorage
 
 	public void ClearOutput()
 	{
-		Text = string.Empty;
+		_textBox?.ClearOutput();
 	}
 
 	public void WriteLine(string s)
 	{
-		if(Text.Length > 20000)
-			Text = string.Empty + "-- TEXT OVERFLOW --";
-
-		Text += s + "\r\n";
+		_textBox?.WriteLine(s);
 	}
 }
