@@ -2,9 +2,14 @@
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Queue;
+using MonoGame.Common;
 
 public class QueueStorage : BaseStorage
 {
+	public QueueStorage(TextBox tb) : base(tb)
+	{
+	}
+
 	public async void QueueStorageTest()
 	{
 		Running = true;

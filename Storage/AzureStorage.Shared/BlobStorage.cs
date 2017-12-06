@@ -3,12 +3,17 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.Xna.Framework;
+using MonoGame.Common;
 using Random = System.Random;
 
 public class BlobStorage : BaseStorage
 {
 	public string BlockBlobContainerName = "democontainerblockblob";
 	public string PageBlobContainerName = "democontainerpageblob";
+
+	public BlobStorage(TextBox tb) : base(tb)
+	{
+	}
 
 	public async void BlobStorageTest()
 	{
