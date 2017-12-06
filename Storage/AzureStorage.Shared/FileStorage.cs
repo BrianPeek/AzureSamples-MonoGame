@@ -3,6 +3,7 @@ using System.IO;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.File;
 using Microsoft.Xna.Framework;
+using MonoGame.Common;
 #if NETFX_CORE
 using Windows.Storage;
 #endif
@@ -12,6 +13,10 @@ public class FileStorage : BaseStorage
 	public string DemoShare = "demofileshare";
 	public string DemoDirectory = "demofiledirectory";
 	public string ImageToUpload = "HelloWorld.png";
+
+	public FileStorage(TextBox tb) : base(tb)
+	{
+	}
 
 	public async void FileStorageTest()
 	{
