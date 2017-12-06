@@ -20,6 +20,3 @@
 /processorParam:TextureFormat=Compressed
 /build:Font.spritefont
 
-#begin HelloWorld.png
-/copy:HelloWorld.png
-
